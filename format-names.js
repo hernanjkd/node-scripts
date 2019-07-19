@@ -15,9 +15,25 @@ db.connect( err => {
 
     db.query("SELECT id, first_name, last_name, email  FROM students", (err, result) => {
         if (err) throw err;
-        
+        console.log("Data retrieved.");
+
+        const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+
+        // Check data
         for (let e in result) {
-            
+            let first = e.first_name;
+            let last = e.last_name;
+            let arr = [];
+
+            // first_name: "john doe", last_name: ""
+            // first_name: "JohnDoe", last_name: ""
+            arr = first.split(" ");
+            if (arr.length == 1)
+
+            if (first != e.first_name || last != e.last_name)
+                db.query(`UPDATE students 
+                        SET first_name = '${first}', last_name = '${last}'
+                        WHERE id = '${e.id}'`)
         }
 
     });
