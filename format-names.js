@@ -13,25 +13,36 @@ db.connect( err => {
     console.log("Connected!");
 
 
-    db.query("SELECT id, first_name, last_name  FROM students", (err, result) => {
+    db.query("SELECT id, first_name, last_name, email  FROM students", (err, result) => {
         if (err) throw err;
-        console.log(result);
+        
+        for (let e in result) {
+            
+        }
+
     });
     
 });
 
+db.end();
+
+
+
 /********************* */
+
 var sql = "UPDATE customers SET address = 'Canyon 123' WHERE address = 'Valley 345'";
 con.query(sql, function (err, result) {
     if (err) throw err;
     console.log(result.affectedRows + " record(s) updated");
 });
 
+
 /********************* */
 `
 UPDATE Customers
 SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
 WHERE CustomerID = 1;`
+
 
 /********************* */
 
@@ -53,6 +64,7 @@ con.connect(function(err) {
       console.log("Message from MySQL Server : " + result.message);
     });
   });
+
 
 /********************* */
 
