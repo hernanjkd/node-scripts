@@ -10,30 +10,47 @@ let db = mysql.createConnection({
 
 db.connect( err => {
     if (err) throw err;
-    console.log("Connected!");
+    console.log("Connected");
 
 
-    db.query("SELECT id, first_name, last_name, email  FROM students", (err, result) => {
+    db.query("SELECT id, first_name, last_name  FROM students", (err, result) => {
         if (err) throw err;
-        console.log("Data retrieved.");
+        console.log("Data retrieved");
 
         const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 
-        // Check data
+
+        // Format names
         for (let e in result) {
             let first = e.first_name;
             let last = e.last_name;
-            let arr = [];
+            let arr = first.split(" ");
+
+            // first_name: "null null"
 
             // first_name: "john doe", last_name: ""
             // first_name: "JohnDoe", last_name: ""
-            arr = first.split(" ");
             if (arr.length == 1)
+                let countUpperCase = 0;
+                let temp = "";
+
+                for (let char of first) {
+                    if (countUpperCase == 4) 
+                        break;
+                        
+                    if (char == char.toUpperCase()) {
+                        temp += " " + char;
+                        countUpperCase++;
+                    } else temp += char;
+                }
 
             if (first != e.first_name || last != e.last_name)
                 db.query(`UPDATE students 
                         SET first_name = '${first}', last_name = '${last}'
-                        WHERE id = '${e.id}'`)
+                        WHERE id = '${e.id}'`, err => {
+                            if (err) throw err;
+                            console.log(`${e.first_name} -> ${first}, ${e.last_name} -> ${last}`)
+                        })
         }
 
     });
