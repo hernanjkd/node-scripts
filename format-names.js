@@ -20,30 +20,38 @@ db.connect( err => {
         const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 
 
-        // Format names
+        /*****************
+         *  FORMAT NAMES
+         *****************/
         for (let e in result) {
             let first = e.first_name;
             let last = e.last_name;
-            let arr = first.split(" ");
-
+            
             // first_name: "null null"
-
-            // first_name: "john doe", last_name: ""
-            // first_name: "JohnDoe", last_name: ""
-            if (arr.length == 1)
+                       
+            let arr = first.split(" ");
+            // first_name: "JohnDoe"
+            // first_name: "JOHNDOE"
+            if (arr.length == 1) {
                 let countUpperCase = 0;
                 let temp = "";
-
                 for (let char of first) {
-                    if (countUpperCase == 4) 
+                    if (countUpperCase == 4) {
+                        temp = first;
                         break;
-                        
+                    }                    
                     if (char == char.toUpperCase()) {
                         temp += " " + char;
                         countUpperCase++;
                     } else temp += char;
                 }
+                first = temp.charAt(0) == " " ? temp.slice(1) : temp;
+            }
+            // first_name: "john doe"
+            else if (arr.length > 1) {
 
+            }
+            
             if (first != e.first_name || last != e.last_name)
                 db.query(`UPDATE students 
                         SET first_name = '${first}', last_name = '${last}'
@@ -58,6 +66,17 @@ db.connect( err => {
 });
 
 db.end();
+
+
+
+
+
+
+
+
+
+
+
 
 
 
