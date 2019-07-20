@@ -45,7 +45,7 @@ db.connect( err => {
                         countUpperCase++;
                     } else temp += char;
                 }
-                first = temp.charAt(0) == " " ? temp.slice(1) : temp;
+                first = temp.trim();
             }
             // first_name: "john doe"
             else if (arr.length > 1) {
