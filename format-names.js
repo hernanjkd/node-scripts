@@ -27,8 +27,12 @@ db.connect( err => {
             let first = e.first_name;
             let last = e.last_name;
             
+            // first_name: null
             // first_name: "null null"
-                       
+            if (first === null || first.includes('null')) {
+                if (e.email)
+            }
+
             let arr = first.split(" ");
             // first_name: "JohnDoe"
             // first_name: "JOHNDOE"
