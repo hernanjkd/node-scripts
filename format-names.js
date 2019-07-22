@@ -18,7 +18,13 @@ db.connect( err => {
         console.log("Data retrieved");
 
         const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-
+        const fullTrim = str => {
+            let newStr = "";
+            str = str.trim();
+            for (let i in str)
+                if (str[i] !== " " || (str[i] === " " && str[i - 1] !== " "))
+                    newStr +=
+        };
 
         /*****************
          *  FORMAT NAMES
@@ -30,39 +36,44 @@ db.connect( err => {
             // first_name: null
             // first_name: "null null"
             if (first === null || first.includes('null')) {
-                if (e.email)
+                if (e.email !== undefined) 
+                    first = e.email.substring(0, e.email.indexOf('@'));
+                else if (e.username !== undefined) 
+                    first = e.username.substring(0, e.username.indexOf('@'));
             }
+            else {
 
-            let arr = first.split(" ");
-            // first_name: "JohnDoe"
-            // first_name: "JOHNDOE"
-            if (arr.length == 1) {
-                let countUpperCase = 0;
-                let temp = "";
-                for (let char of first) {
-                    if (countUpperCase == 4) {
-                        temp = first;
-                        break;
-                    }                    
-                    if (char == char.toUpperCase()) {
-                        temp += " " + char;
-                        countUpperCase++;
-                    } else temp += char;
+                let arr = first.split(" ");
+                // first_name: "JohnDoe"
+                // first_name: "JOHNDOE"
+                if (arr.length == 1) {
+                    let countUpperCase = 0;
+                    let temp = "";
+                    for (let char of first) {
+                        if (countUpperCase == 4) {
+                            temp = first;
+                            break;
+                        }                    
+                        if (char == char.toUpperCase()) {
+                            temp += " " + char;
+                            countUpperCase++;
+                        } else temp += char;
+                    }
+                    first = temp.trim();
                 }
-                first = temp.trim();
-            }
-            // first_name: "john doe"
-            else if (arr.length > 1) {
+                // first_name: "john doe"
+                else if (arr.length > 1) {
 
+                }
+                
+                if (first != e.first_name || last != e.last_name)
+                    db.query(`UPDATE students 
+                            SET first_name = '${first}', last_name = '${last}'
+                            WHERE id = '${e.id}'`, err => {
+                                if (err) throw err;
+                                console.log(`${e.first_name} -> ${first}, ${e.last_name} -> ${last}`)
+                            })
             }
-            
-            if (first != e.first_name || last != e.last_name)
-                db.query(`UPDATE students 
-                        SET first_name = '${first}', last_name = '${last}'
-                        WHERE id = '${e.id}'`, err => {
-                            if (err) throw err;
-                            console.log(`${e.first_name} -> ${first}, ${e.last_name} -> ${last}`)
-                        })
         }
 
     });
