@@ -22,8 +22,9 @@ db.connect( err => {
             let newStr = "";
             str = str.trim();
             for (let i in str)
-                if (str[i] !== " " || (str[i] === " " && str[i - 1] !== " "))
-                    newStr +=
+                if (str[i] !== " " || str[i - 1] !== " ")
+                    newStr += str[i];
+            return newStr;
         };
 
         /*****************
@@ -42,6 +43,8 @@ db.connect( err => {
                     first = e.username.substring(0, e.username.indexOf('@'));
             }
             else {
+                first = fullTrim(first);
+                last = fullTrim(last);
 
                 let arr = first.split(" ");
                 // first_name: "JohnDoe"
