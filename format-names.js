@@ -86,11 +86,9 @@ db.connect( err => {
                             if (err) throw err;
                             console.log(`${e.first_name} -> ${first}, ${e.last_name} -> ${last}`)
                         })
-            }
+            
         }
 
-    });
-    
 });
 
 db.end();
