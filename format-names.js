@@ -32,14 +32,19 @@ db.connect( err => {
          *****************/
         for (let e in result) {
             let first = e.first_name;
-            let last = e.last_name === null ? "" : e.last_name;
+            let last = e.last_name;
+            if (last === null) last = "";
+            // In the fetch url, Students have email, Users have username
+            let username = e.username === undefined ? getUserName(e.email) : getUserName(e.username);
 
             // first_name: null
             // first_name: "null null"
             if (first === null || first.includes("null")) {
-                if (e.email !== undefined) first = e.email.substring(0, e.email.indexOf("@")).toLowerCase();
-                else if (e.username !== undefined)
-                    first = e.username.substring(0, e.username.indexOf("@")).toLowerCase();
+                first = username;
+            }
+            // first === email username, keep lowercase
+            else if (first.toLowerCase() === username) {
+                first = username;
             } else {
                 first = fullTrim(first);
                 last = fullTrim(last);
@@ -75,6 +80,8 @@ db.connect( err => {
                     let arrl = last.split(" ");
                     for (let i in arr) arr[i] = capitalize(arr[i]);
                     for (let i in arrl) arrl[i] = capitalize(arrl[i]);
+                    first = arr.join(" ");
+                    last = arrl.join(" ");
                 }
             }
 
