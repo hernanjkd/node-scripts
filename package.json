@@ -1,0 +1,22 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "format-names.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hernanjkd/node-scripts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hernanjkd/node-scripts/issues"
+  },
+  "homepage": "https://github.com/hernanjkd/node-scripts#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
