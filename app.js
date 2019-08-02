@@ -6,7 +6,7 @@ const resp = await fetch(url);
 const data = await resp.json();
 
 
-const uodateStudent = (student) => fetch('')
+const updateStudent = (student) => fetch('')
 .then(resp => {
     if(!resp.ok) throw new Error(`There was an error updating ${student.name}`);
 });
@@ -14,6 +14,6 @@ const uodateStudent = (student) => fetch('')
 const cleanedStudents = studentCleanup(data);
 let index = 0;
 setInterval(() => {
-    await uodateStudent(cleanedStudents[index]);
+    await updateStudent(cleanedStudents[index]);
     index++;
 }, 1000);
