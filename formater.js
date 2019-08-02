@@ -14,6 +14,7 @@ const studentCleanup = (result) => {
      *  FORMAT NAMES
      *****************/
     for (let e in result) {
+
         let first = e.first_name;
         let last = e.last_name;
         if (last === null) last = "";
@@ -67,7 +68,11 @@ const studentCleanup = (result) => {
                 last = arrl.join(" ");
             }
         }
+
+        log.push(`${e.first_name} -> ${first},  ${e.last_name} -> ${last}, ${e.email}`);
     }
+
+    console.log(log);
 }
 
 
