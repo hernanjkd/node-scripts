@@ -1,5 +1,5 @@
 const fetch = require("node-fetch");
-const { studentCleanup } = require("./formater.js");
+const { studentCleanup } = require("./formatter.js");
 
 
 const access_token = "76dd7a6f655407ac1a65b2b9c52aa8a10fe4939e";
