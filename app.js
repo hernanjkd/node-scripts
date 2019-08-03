@@ -20,9 +20,7 @@ const cleanedStudents = studentCleanup(data);
 
 for (let i in cleanedStudents)
     setTimeOut(() => {
-        console.log(`Formatting 
-            "${data[i].first_name}, ${data[i].last_name}" -> 
-            "${cleanedStudents[i].first_name}, ${cleanedStudents[i].last_name}"`);
+        console.log(`"${data[i].first_name}, ${data[i].last_name}" -> "${cleanedStudents[i].first_name}, ${cleanedStudents[i].last_name}" - ${data.email}`);
         await updateStudent(cleanedStudents[i]);
     }, 1000);
 
