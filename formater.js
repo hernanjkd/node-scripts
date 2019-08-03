@@ -1,6 +1,6 @@
 
 const studentCleanup = (result) => {
-    
+
     const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     const fullTrim = str => {
         let newStr = "";
@@ -70,7 +70,6 @@ const studentCleanup = (result) => {
             }
         }
 
-        log.push(`${e.first_name} -> ${first},  ${e.last_name} -> ${last}, ${e.email}`);
     }
 
     console.log(log);
