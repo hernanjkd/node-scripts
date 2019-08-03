@@ -11,7 +11,13 @@ const resp = await fetch(url);
 const data = await resp.json();
 
 
-const updateStudent = (student) => fetch('')
+const updateStudent = (student) => fetch('',{
+    method: 'PUT',
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(student)
+})
 .then(resp => {
     if(!resp.ok) throw new Error(`There was an error updating ${student.name}`);
 });
@@ -20,7 +26,9 @@ const cleanedStudents = studentCleanup(data);
 
 for (let i in cleanedStudents)
     setTimeOut(() => {
-        console.log(`"${data[i].first_name}, ${data[i].last_name}" -> "${cleanedStudents[i].first_name}, ${cleanedStudents[i].last_name}" - ${data.email}`);
+        console.log(`"${data[i].first_name}, ${data[i].last_name}" - ${data.email}`);
+        console.log(`"${cleanedStudents[i].first_name}, ${cleanedStudents[i].last_name}"`);
+        console.log('');
         await updateStudent(cleanedStudents[i]);
     }, 1000);
 
