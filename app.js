@@ -17,8 +17,11 @@ const updateStudent = (student) => fetch('')
 });
 
 const cleanedStudents = studentCleanup(data);
-let index = 0;
-setInterval(() => {
-    await updateStudent(cleanedStudents[index]);
-    index++;
-}, 1000);
+
+for (let index in cleanedStudents)
+    setTimeOut(() => {
+        console.log(`Formatting ${}, `)
+        await updateStudent(cleanedStudents[index]);
+    }, 1000);
+
+console.log('Complete!');
