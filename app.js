@@ -18,10 +18,12 @@ const updateStudent = (student) => fetch('')
 
 const cleanedStudents = studentCleanup(data);
 
-for (let index in cleanedStudents)
+for (let i in cleanedStudents)
     setTimeOut(() => {
-        console.log(`Formatting ${}, `)
-        await updateStudent(cleanedStudents[index]);
+        console.log(`Formatting 
+            "${data[i].first_name}, ${cleanedStudents[i].first_name}" -> 
+            "${data[i].last_name}, ${cleanedStudents[i].last_name}"`)
+        await updateStudent(cleanedStudents[i]);
     }, 1000);
 
 console.log('Complete!');
