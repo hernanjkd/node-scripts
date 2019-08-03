@@ -70,11 +70,13 @@ const studentCleanup = (result) => {
                 first = arr.join(" ");
                 last = arrl.join(" ");
             }
+
             fixedArray.push({
                 first_name: first,
                 last_name: last
             });
         }
+        
         return fixedArray;
     }
 }
