@@ -30,7 +30,7 @@ const studentCleanup = (result) => {
             first = username;
         }
         // first === email username, keep lowercase
-        else if (first.toLowerCase() === username) {
+        else if (first.toLowerCase() === username && last === "") {
             first = username;
         } else {
             first = fullTrim(first);
