@@ -10,10 +10,10 @@ const url = (id) => `https://api.breatheco.de/${get.students}/${id}?access_token
 async function asyncFetch(_url, _opt) {
     const response = await fetch(_url, _opt);
     const data = await response.json();
-    return json;
+    return data;
 }
 
-const updateStudent = (student) => await asyncFetch(url(student.id),{
+const updateStudent = (student) => asyncFetch(url(student.id),{
     method: 'PUT',
     headers: {
         "Content-Type": "application/json"
@@ -21,23 +21,22 @@ const updateStudent = (student) => await asyncFetch(url(student.id),{
     body: JSON.stringify(student)
 });
 
-let i = cleanedStudents.length;
-const next = () => {
-    setTimeOut(() => {
-        i--;
-        console.log(`"${data[i].first_name}, ${data[i].last_name}" - ${data.email}`);
-        console.log(`"${cleanedStudents[i].first_name}, ${cleanedStudents[i].last_name}"`);
-        console.log('');
-        updateStudent(cleanedStudents[i]);
-        i && next();
-    }, 1000);
-}
-
 
 let { data } = asyncFetch(url());
 
-const cleanedStudents = studentCleanup(data);
+const cleanStudents = studentCleanup(data);
 
+let i = cleanStudents.length;
+const next = () => {
+    setTimeOut(() => {
+        i--;
+        console.log(`"${data[i].first_name}, ${data[i].last_name}" - ${data[i].email}`);
+        console.log(`"${cleanStudents[i].first_name}, ${cleanStudents[i].last_name}"`);
+        console.log('');
+        updateStudent(cleanStudents[i]);
+        i && next();
+    }, 1000);
+}
 next();
 
 console.log('Complete!');

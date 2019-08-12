@@ -1,5 +1,5 @@
 
-const studentCleanup = (result) => {
+const studentCleanup = (data) => {
     
     const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     const fullTrim = str => {
@@ -10,13 +10,10 @@ const studentCleanup = (result) => {
                 newStr += str[i];
         return newStr;
     };
+    
+    let formattedArray = [];
 
-    /*****************
-     *  FORMAT NAMES
-     *****************/
-    let fixedArray = [];
-
-    for (let e in result) {
+    for (let e of data) {
 
         let first = e.first_name;
         let last = e.last_name;
@@ -71,7 +68,7 @@ const studentCleanup = (result) => {
                 last = arrl.join(" ");
             }
 
-            fixedArray.push({
+            formattedArray.push({
                 first_name: first,
                 last_name: last
             });
