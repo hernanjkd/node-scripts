@@ -2,17 +2,16 @@ const fetch = require("node-fetch");
 const { studentCleanup } = require("./formatter.js");
 
 
-const access_token = "76dd7a6f655407ac1a65b2b9c52aa8a10fe4939e";
-const availableEndPoints = ["students", "user"];
-const get = availableEndPoints[0];
-const req = async (_url, _opt) => {
+const access_token = "57129b9a324c1336b9ea5645d77d8e904c9fcd3a";
+const get = {students: "students", user: "user"};
+
+async function asyncFetch(_url, _opt) {
     const response = await fetch(_url, _opt);
-    const json = await response.json();
+    const data = await response.json();
     return json;
 }
 
-const url = (id) => `https://api.breatheco.de/${get}/${id}?access_token=${access_token}`;
-const data = await req(url);
+const url = (id) => `https://api.breatheco.de/${get.students}/${id}?access_token=${access_token}`;
 
 
 const updateStudent = (student) => await req(url(student.id),{
