@@ -12,7 +12,7 @@ const studentCleanup = (data) => {
     };
     
     let formattedArray = [];
-
+    
     for (let e of data) {
 
         let first = e.first_name;
