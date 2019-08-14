@@ -37,32 +37,3 @@ const updateStudent = (student) => fetch(url(student.id),{
     },
     body: JSON.stringify(student)
 });
-
-
-//let data = await asyncFetch(url());
-
-
-// async function asyncFetch() {
-//     // let resp = await fetch('https://api.breatheco.de/students/?access_token=b86ee02825166758efd20ceb275c5cdca49e4d1b')
-//     let resp = await fetch('http://127.0.0.1:3000/');
-//     let data = await resp.json();
-//     return data;
-// }
-
-// let x = async () => {
-//     let data = await asyncFetch();
-//     console.log(data);
-// }
-// x();
-
-
-// fetch('http://127.0.0.1:3000/')
-// .then(resp => resp.json())
-// .then(data => console.log(data));
-
-
-// console.log(data.code)
-// console.log( Array.isArray(data.data) )
-// setTimeout(() => {
-// console.log( data );
-// }, 3000);
