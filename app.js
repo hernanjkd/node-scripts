@@ -1,5 +1,6 @@
 const fetch = require("node-fetch");
 const { studentCleanup } = require("./formatter.js");
+const fs = require("fs");
 
 const access_token = "a673067b2ef5e63443f4a209afa133cefdd860e9";
 const get = { students: "student", user: "user" };
@@ -24,9 +25,39 @@ fetch(
 					data[i].first_name !== cleanStudent[i].first_name &&
 					data[i].last_name !== cleanStudent[i].last_name
 				) {
+					console.log(
+						`${data[i].first_name}, ${data[i].last_name} - ${
+							data[i].email
+						} ------- FIRST & LAST`
+					);
+					console.log(
+						`${cleanStudents[i].first_name}, ${
+							cleanStudents[i].last_name
+						}`
+					);
+					console.log("");
 				} else if (data[i].first_name !== cleanStudent[i].first_name) {
+					console.log(`${data[i].email}`);
+					console.log(
+						`${data[i].first_name} ----> ${
+							cleanStudents[i].first_name
+						} ------- FIRST`
+					);
+					console.log("");
 				} else if (data[i].last_name !== cleanStudent[i].last_name) {
+					console.log(
+						`${data[i].last_name} ----> ${
+							cleanStudents[i].last_name
+						} ------- LAST`
+					);
+					console.log("");
 				} else {
+					console.log(
+						`${data[i].first_name}, ${
+							data[i].last_name
+						} ------- CORRECT`
+					);
+					console.log("");
 				}
 				// console.log(`"${data[i].first_name}, ${data[i].last_name}" - ${data[i].email}`);
 				// console.log(`"${cleanStudents[i].first_name}, ${cleanStudents[i].last_name}"`);
