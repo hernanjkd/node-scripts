@@ -32,9 +32,10 @@ fetch(`https://api.breatheco.de/students/?access_token=${access_token}`)
 
         //         i--;
         for (let i in data) {
-            log += i + '. ';
             if (i === '666') break;
-            console.log(i)
+
+            log += i + '. ';
+
             if (data[i] !== undefined) {
                 if (data[i].first_name !== cleanStudents[i].first_name &&
                     data[i].last_name !== cleanStudents[i].last_name) {
