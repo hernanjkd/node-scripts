@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 const { studentCleanup } = require("./formatter.js");
 const fs = require("fs");
 
-const access_token = "b9a7a97b6fbeccb4741b78db34ee68e0a981910b";
+const access_token = "9dd4f1fe9ccb59129b02fefca18cbab09231d6df";
 const get = { students: "student", user: "user" };
 
 const url = (id = "") =>
@@ -17,8 +17,10 @@ const updateStudent = student => fetch(url(student.id), {
     body: JSON.stringify(student)
 });
 
+const spaces = (num) => num > 99 ? '....' : num > 9 ? '...' : '..';
 
 let log = "";
+let err = "";
 
 fetch(`https://api.breatheco.de/students/?access_token=${access_token}`)
     .then(resp => resp.json())
@@ -32,28 +34,36 @@ fetch(`https://api.breatheco.de/students/?access_token=${access_token}`)
 
         //         i--;
         for (let i in data) {
-            if (i === '666') break;
 
-            log += i + '. ';
 
-            if (data[i] !== undefined) {
-                if (data[i].first_name !== cleanStudents[i].first_name &&
-                    data[i].last_name !== cleanStudents[i].last_name) {
+            if (data[i].first_name !== cleanStudents[i].first_name &&
+                data[i].last_name !== cleanStudents[i].last_name) {
 
-                    log += `${data[i].first_name}, ${data[i].last_name} - ${data[i].email} ------- FIX FIRST & LAST\n${cleanStudents[i].first_name}, ${cleanStudents[i].last_name}\n\n`;
-                }
-                else if (data[i].first_name !== cleanStudents[i].first_name) {
-                    log += `${data[i].email} ${data[i].first_name} ----> ${cleanStudents[i].first_name} ------- FIX FIRST\n\n`;
-                }
-                else if (data[i].last_name !== cleanStudents[i].last_name) {
-                    log += `${data[i].last_name} ----> ${cleanStudents[i].last_name} ------- FIX LAST\n\n`;
-                }
-                else {
-                    log += `${data[i].first_name}, ${data[i].last_name} ------- CORRECT\n\n`;
-                }
+                err += i + `. "${data[i].first_name}, ${data[i].last_name}" --- ${data[i].email}`;
+                err += ` ------- FIX FIRST & LAST\n\n`;
+                err += `${spaces(i)} "${cleanStudents[i].first_name}, ${cleanStudents[i].last_name}"\n\n\n`;
             }
+            else if (data[i].first_name !== cleanStudents[i].first_name) {
+                err += i + `. "${data[i].first_name}, ${data[i].last_name}" --- ${data[i].email}`;
+                err += ` ------- FIX FIRST\n\n`;
+                err += `${spaces(i)} "${cleanStudents[i].first_name}, ${cleanStudents[i].last_name}"\n\n\n`;
+            }
+            else if (data[i].last_name !== cleanStudents[i].last_name) {
+                err += i + `. "${data[i].first_name}, ${data[i].last_name}" --- ${data[i].email}`;
+                err += ` ------- FIX LAST\n\n`;
+                err += `${spaces(i)} "${cleanStudents[i].first_name}, ${cleanStudents[i].last_name}"\n\n\n`;
+            }
+            else {
+                log += i + `. "${data[i].first_name}, ${data[i].last_name}" --- ${data[i].email}`;
+                log += ` ------- CORRECT\n\n`;
+                log += `${spaces(i)} "${cleanStudents[i].first_name}, ${cleanStudents[i].last_name}"\n\n\n`;
+            }
+
+
         }
+        fs.writeFile("log.txt", err, err => { if (err) throw err; });
         fs.appendFile("log.txt", log, err => { if (err) throw err; });
+
         // updateStudent(cleanStudents[i])
         //     .then(resp => console.log(`status = ${resp.status}, i = ${i}`) || resp.ok && i && next())
         //     .catch(err => console.error(err));

@@ -1,9 +1,9 @@
 
 const studentCleanup = (data) => {
-    
+
     const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     const getUserName = email => email.substring(0, email.indexOf("@")).toLowerCase();
-	const fullTrim = str => {
+    const fullTrim = str => {
         let newStr = "";
         str = str.trim();
         for (let i in str)
@@ -11,9 +11,9 @@ const studentCleanup = (data) => {
                 newStr += str[i];
         return newStr;
     };
-    
+
     let formattedArray = [];
-    
+
     for (let e of data) {
 
         let first = e.first_name;
@@ -69,17 +69,17 @@ const studentCleanup = (data) => {
                 last = arrl.join(" ");
             }
 
-            formattedArray.push({
-                id: e.id,
-                first_name: first,
-                last_name: last
-            });
-        } 
+        }
+        formattedArray.push({
+            id: e.id,
+            first_name: first,
+            last_name: last
+        });
     }
     return formattedArray;
 }
 
 
-module.exports= {
+module.exports = {
     studentCleanup
 };
