@@ -1,0 +1,103 @@
+{
+    "/apps/states/38423": [
+        {
+            "catalog_id": "38423",
+            "rule": "complete",
+            "id": "305426",
+            "app": "Manage PDF",
+            "rule_id": "4",
+            "date_completed": "2019-10-01 16:56:44.026735+00"
+        },
+        {
+            "catalog_id": "38423",
+            "rule": "complete",
+            "id": "305453",
+            "app": "Manage Categories",
+            "rule_id": "12",
+            "date_completed": "2019-10-01 20:34:40.078825+00"
+        },
+        {
+            "catalog_id": "38423",
+            "rule": "complete",
+            "id": "305455",
+            "app": "Celebration",
+            "rule_id": "100",
+            "date_completed": "2019-10-01 20:34:43.445924+00"
+        },
+        {
+            "catalog_id": "38423",
+            "rule": "complete",
+            "id": "305454",
+            "app": "Select Button Style",
+            "rule_id": "19",
+            "date_completed": "2019-10-01 20:34:41.89214+00"
+        },
+        {
+            "catalog_id": "38423",
+            "rule": "complete",
+            "id": "305422",
+            "app": "Cover",
+            "rule_id": "14",
+            "date_completed": "2019-10-01 16:34:35.561266+00"
+        },
+        {
+            "catalog_id": "38423",
+            "rule": "complete",
+            "id": "305425",
+            "app": "Upload PDF",
+            "rule_id": "4",
+            "date_completed": "2019-10-01 16:55:59.000721+00"
+        },
+        {
+            "catalog_id": "38423",
+            "rule": "complete",
+            "id": "305430",
+            "app": "Product Feed",
+            "rule_id": "2",
+            "date_completed": "2019-10-01 17:07:52.927041+00"
+        },
+        {
+            "catalog_id": "38423",
+            "rule": "complete",
+            "id": "305429",
+            "app": "Process Feed",
+            "rule_id": "10",
+            "date_completed": "2019-10-01 17:07:52.923207+00"
+        },
+        {
+            "catalog_id": "38423",
+            "rule": "complete",
+            "id": "305428",
+            "app": "Feed Setup",
+            "rule_id": "8",
+            "date_completed": "2019-10-01 16:58:22.327752+00"
+        },
+        {
+            "catalog_id": "38423",
+            "rule": "complete",
+            "id": "305427",
+            "app": "Import Feed",
+            "rule_id": "7",
+            "date_completed": "2019-10-01 16:57:32.123476+00"
+        },
+        {
+            "catalog_id": "38423",
+            "rule": "complete",
+            "id": "305452",
+            "app": "Search Options",
+            "rule_id": "15",
+            "date_completed": "2019-10-01 20:34:36.539215+00"
+        },
+        {
+            "catalog_id": "38423",
+            "rule": "complete",
+            "id": "305423",
+            "app": "General Catalog Details",
+            "rule_id": "3",
+            "date_completed": "2019-10-01 16:34:35.605585+00"
+        }
+    ],
+    "/apps/feed/processed/38423": {
+        "FeedProcessed": 1
+    }
+}
