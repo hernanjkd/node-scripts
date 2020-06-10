@@ -59,4 +59,34 @@ async function test() {
     console.log(urls)
 }
 
-test()
+function processResults(results) {
+    let alphabetNames = []
+    let backwards = []
+
+    let sortedNames = results.sort((a, b) => {
+        let nameA = a.name.toUpperCase();
+        let nameB = b.name.toUpperCase();
+        if (nameA > nameB)
+            return 1;
+        return -1;
+    })
+
+    let urlNums = []
+    for (let i in results) {
+        urlNums.push(findNum(results[i].url))
+    }
+
+    let missing = []
+    for (let i = 1; i <= findNum(results[results.length - 1].url); i++) {
+        if (!urlNums.includes(i)) {
+            missing.push(i)
+        }
+    }
+
+
+    for (let e of results) {
+        alphabetNames.push(e.name)
+    }
+
+    return missing;
+}
