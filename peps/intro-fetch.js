@@ -61,7 +61,6 @@ async function test() {
 
 function processResults(results) {
     let alphabetNames = []
-    let backwards = []
 
     let sortedNames = results.sort((a, b) => {
         let nameA = a.name.toUpperCase();
@@ -71,18 +70,27 @@ function processResults(results) {
         return -1;
     })
 
-    let urlNums = []
-    for (let i in results) {
-        urlNums.push(findNum(results[i].url))
-    }
+    // let backwards = arr.sort()
+
+    // let urlNums = []
+    // for (let i in results) {
+    //     urlNums.push(findNum(results[i].url))
+    // }
+
+    // let missing = []
+    // for (let i = 1; i <= findNum(results[results.length - 1].url); i++) {
+    //     if (!urlNums.includes(i)) {
+    //         missing.push(i)
+    //     }
+    // }
 
     let missing = []
-    for (let i = 1; i <= findNum(results[results.length - 1].url); i++) {
-        if (!urlNums.includes(i)) {
+    let requiredLength = findNum(results[results.length - 1].url)
+    for (let i = 1; i <= requiredLength; i++) {
+        if (findNum(results[i - 1].url) !== i) {
             missing.push(i)
         }
     }
-
 
     for (let e of results) {
         alphabetNames.push(e.name)
@@ -90,3 +98,31 @@ function processResults(results) {
 
     return missing;
 }
+
+function x() {
+    return new Promise(a => a(5))
+}
+
+async function run() {
+    console.log('hello')
+    console.log(await x())
+    console.log('bye')
+}
+
+// console.log( Array.isArray(new Promise((a, b) => a(5))) )
+
+// console.log('hello')
+// x().then(n => {
+//     console.log(1)
+//     console.log(n)
+//     console.log(3)
+// })
+// console.log('bye')
+
+// try {
+//     x().then()
+//     console.log(true)
+// }
+// catch (err) {
+//     console.log(false)
+// }
