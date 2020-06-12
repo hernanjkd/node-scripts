@@ -25,11 +25,7 @@ let y = tester.test(api2, './api2.json');
 
 
 Promise.all([x, y])
-    .then((arr) => {
-
-        x = arr[0];
-        y = arr[1];
-
+    .then(([x, y]) => {
         var obj = compareJSON(x, y);
         fs.writeFile('compareJSON.json', JSON.stringify(obj, null, 4), `utf8`, function (err) {
             if (err) {
