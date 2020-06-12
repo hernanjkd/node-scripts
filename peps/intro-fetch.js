@@ -100,8 +100,13 @@ function processResults(results) {
 }
 
 function x() {
-    return new Promise(a => a(5))
+    return new Promise((resolve) => {
+        setTimeout(() => resolve('hi peps'), 5000)
+    })
 }
+
+x().then(message => console.log(message))
+
 
 async function run() {
     console.log('hello')
@@ -126,3 +131,18 @@ async function run() {
 // catch (err) {
 //     console.log(false)
 // }
+
+
+async function fetchUrl(url) {
+    return fetch(url)
+        .then(resp => resp.json())
+        .then(data => {
+            return data
+        })
+}
+
+async function runCode() {
+    let data = await fetchUrl(url)
+    console.log(data)
+}
+
