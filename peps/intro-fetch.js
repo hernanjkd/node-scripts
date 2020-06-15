@@ -30,18 +30,7 @@ const url = 'https://swapi.dev/api/planets/'
 //             .then(resp => resp.json())
 //             .then(data => {
 //                 console.log('fetch')
-//                 next = data.next ? true : false
-//                 next && urls.push(data.next)
-//             })
-//     }
-//     console.log(urls)
-// }
 
-// test()
-
-/********************************
- *  WAITING FOR THE ASYNC FETCH
- ********************************/
 async function test() {
     let next = true
     let urls = [url]
