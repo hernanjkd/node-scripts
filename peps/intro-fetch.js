@@ -17,9 +17,7 @@ const url = 'https://swapi.dev/api/planets/'
 // fetchSwapi(url).then(data => console.log(data))
 
 
-/***********************
- *  NOT WAITING FOR IT
- ***********************/
+// NOT WAITING FOR IT
 // function test() {
 //     let next = true
 //     let urls = [url]
@@ -30,7 +28,17 @@ const url = 'https://swapi.dev/api/planets/'
 //             .then(resp => resp.json())
 //             .then(data => {
 //                 console.log('fetch')
+//                 next = data.next ? true : false
+//                 next && urls.push(data.next)
+//             })
+//     }
+//     console.log(urls)
+// }
 
+// test()
+
+
+//  WAITING FOR THE ASYNC FETCH
 async function test() {
     let next = true
     let urls = [url]
