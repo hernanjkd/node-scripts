@@ -19,19 +19,19 @@ const coords = {
     '0': ['8', '0']
 }
 
-function getPins(pin) {
-    if (isNaN(pin) || pin.length < 1 || pin.length > 8)
-        return 'Invalid pin'
+// function getPins(pin) {
+//     if (isNaN(pin) || pin.length < 1 || pin.length > 8)
+//         return 'Invalid pin'
 
-    let allVariations = []
-    for (let e of pin)
-        allVariations.push(coords[e])
+//     let allVariations = []
+//     for (let e of pin)
+//         allVariations.push(coords[e])
 
-    answer = []
-    for (let arr of allVariations) {
+//     answer = []
+//     for (let arr of allVariations) {
 
-    }
-}
+//     }
+// }
 
 
 
@@ -55,7 +55,7 @@ function loop(x) {
     return mem
 }
 
-console.log(loop(all))
+// console.log(loop(all))
 
 
 
@@ -109,3 +109,5 @@ function findMario(item) {
 }
 
 // findMario(obj)
+
+
