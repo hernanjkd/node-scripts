@@ -148,4 +148,9 @@ function getPINs(observed) {
     }
 }
 
-console.log('13'.split(''))
+function x() {
+    return 3, []
+}
+
+console.log([1, 2, 3].reduce((a, b) => (a + b)))
+console.log([1, 2, 3].reduce((a, b) => (a + b), []))
