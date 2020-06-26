@@ -5,9 +5,18 @@ const lock = [
     ['*', '0', '#']
 ]
 
-let coordinates = {
-    '1': ['2', '4'],
-    '2': ['1', '5', '3']
+const coords = {
+    '0': ['0', '8'],
+    '1': ['1', '2', '4'],
+    '2': ['1', '2', '3', '4'],
+    '3': ['2', '3', '6'],
+    '4': ['1', '4', '5', '7'],
+    '5': ['2', '4', '5', '6', '8'],
+    '6': ['3', '5', '6', '9'],
+    '7': ['4', '7', '8'],
+    '8': ['5', '7', '8', '9'],
+    '9': ['6', '8', '9'],
+    '0': ['8', '0']
 }
 
 function getPins(pin) {
@@ -15,30 +24,42 @@ function getPins(pin) {
         return 'Invalid pin'
 
     let allVariations = []
-    for (let e of pin) {
-        let temp = [e]
+    for (let e of pin)
+        allVariations.push(coords[e])
+
+    answer = []
+    for (let arr of allVariations) {
 
     }
 }
 
-function createCoordinates() {
-    let coords = {}
-    for (let i in lock)
-        for (let j in lock[i]) {
-            coords[lock[i][j]] = getSurroundings(Number(i), Number(j))
-        }
+
+
+
+
+let obj = {
+    one: [2, 3, 4, 5, { y: '5', x: '6' }, 6, 7],
+    two: {
+        t: 'sdf',
+        i: 'iii',
+        a: ['yoshi', 'mario', { super: 'mario' }]
+    },
+    three: 'uioiuo',
+    four: '5223',
+    five: 'mario'
 }
 
-function getSurroundings(i, j) {
-    let mem = []
-    if (lock[i + 1] !== undefined && !isNaN(lock[i + 1][j]))
-        mem.push(lock[i + 1][j])
-    if (lock[i - 1] !== undefined && !isNaN(lock[i - 1][j]))
-        mem.push(lock[i - 1][j])
-    if (lock[i])
-
+function findMario(item) {
+    if (typeof item === 'string' && item === 'mario')
+        console.log(item)
+    if (typeof item === 'object') {
+        if (Array.isArray(item))
+            for (let e of item)
+                findMario(e)
+        else
+            for (let e of Object.values(item))
+                findMario(e)
+    }
 }
 
-// let i = 2; let j = 3;
-// [i, j] = [i + 1, j + 1]
-// console.log(i, j)
+// findMario(obj)
