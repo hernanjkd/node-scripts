@@ -35,8 +35,54 @@ function getPins(pin) {
 
 
 
+let who = ['John', 'Peps']
+let what = [' jumps ', ' codes ']
+let when = ['in the afternoon.', 'at night.']
+
+let all = [who, what, when]
+
+function loop(x) {
+    let mem = ''
+    if (typeof x === 'string') {
+        return x
+    }
+    if (x instanceof Array && x.length > 0)
+        for (let e of x)
+            if (e instanceof Array)
+                for (let k of e)
+                    mem += loop(k)
+            else mem += loop(e)
+    return mem
+}
+
+console.log(loop(all))
 
 
+
+
+// PROTOTYPES
+Array.prototype.myUcase = function () {
+    // console.log(this)
+    for (i = 0; i < this.length; i++) {
+        this[i] = this[i].toUpperCase();
+    }
+};
+
+let arr = ['asdf', 'lkj']
+arr.myUcase()
+// console.log(arr)
+
+// console.log([] instanceof Array)
+// console.log({} instanceof Array)
+
+// console.log('sdf'.constructor.name)
+// console.log([].constructor.name)
+// console.log({}.constructor.name)
+
+
+
+
+// RECURSION PRACTICE
 let obj = {
     one: [2, 3, 4, 5, { y: '5', x: '6' }, 6, 7],
     two: {
