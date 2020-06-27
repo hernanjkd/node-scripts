@@ -122,15 +122,21 @@ function getPINs(observed) {
 
     function cartesian(arr) {
         return arr.reduce((a, b) => {
-            let q = a.map((x) => b.map((y) => x.concat(y)))
+            let q = a.map((x) => b.map((y) => {
+                let w = x.concat(y)
+                console.log('concat', w)
+                return w
+            }))
+            console.log('map', q)
             q = q.reduce((a, b) => a.concat(b))
+            console.log('redue', q)
             return q
         })
     }
 }
 
 
-// console.log(getPINs(all))
+console.log('total', getPINs(all))
 
 
 
@@ -154,8 +160,12 @@ function x() {
 
 
 
-const data = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+// const data = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 
-const flat = data.reduce((total, amount) => {
-    return total.concat(amount);
-}, []);
+// const flat = data.reduce((total, amount) => {
+//     let x = total.concat(amount)
+//     console.log('x', x)
+//     return x
+// });
+
+// console.log(flat)
