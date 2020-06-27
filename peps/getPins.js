@@ -41,23 +41,16 @@ let when = ['in the afternoon.', 'at night.']
 
 let all = [who, what, when]
 
+let arr = []
+let mem = ''
 function loop(x) {
-    let mem = ''
-    if (typeof x === 'string') {
-        return x
-    }
-    if (x instanceof Array && x.length > 0)
-        for (let e of x)
-            if (e instanceof Array)
-                for (let k of e)
-                    mem += loop(k)
-            else mem += loop(e)
-    return mem
+    return x.reduce((a, b) => a.map(x => b.map(y => x.concat(y)).reduce((a, b) => a.concat(b), [])), [[]])
 }
+
 
 // console.log(loop(all))
 
-
+console.log(getPINs(all))
 
 
 // PROTOTYPES
@@ -68,8 +61,8 @@ Array.prototype.myUcase = function () {
     }
 };
 
-let arr = ['asdf', 'lkj']
-arr.myUcase()
+// let arr = ['asdf', 'lkj']
+// arr.myUcase()
 // console.log(arr)
 
 // console.log([] instanceof Array)
@@ -122,6 +115,66 @@ function getPINs(observed) {
         ['7', '8', '9'],
         [_, '0', _]
     ]
+    const keys = observed//.split('').map(o => getSiblingKeys(o.toString(), pad))
+    const results = cartesian(keys)//.map(arr => arr.join(''))
+
+    return results
+
+    function getSiblingKeys(n, pad) {
+        const e = []
+        const y = pad.findIndex(arr => arr.indexOf(n) != -1)
+        const x = pad[y].indexOf(n)
+
+        e.push(n)
+        if (y > 0) e.push(pad[y - 1][x])
+        if (y < 2 || n == '8') e.push(pad[y + 1][x])
+        if (x > 0 && n != '0') e.push(pad[y][x - 1])
+        if (x < 2 && n != '0') e.push(pad[y][x + 1])
+
+        return e
+    }
+
+    function cartesian(arr) {
+        return arr.reduce((a, b) => (
+            a.map((x) => b.map((y) => x.concat(y))).reduce((a, b) => a.concat(b))
+        ))
+    }
+}
+
+
+
+
+
+
+String.prototype.log = function () {
+    let x = ''
+    for (let e of this)
+        x += e
+    console.log(x)
+}
+
+let xxx = 0
+function x() {
+    console.log(++xxx)
+    if (xxx < 5) x()
+}
+
+
+
+// console.log([1, 2, 3].reduce((a, b) => (a + b)))
+// console.log([1, 2, 3].reduce((a, b) => (a + b), []))
+
+
+
+
+function pins(observed) {
+    const _ = undefined
+    const pad = [
+        ['1', '2', '3'],
+        ['4', '5', '6'],
+        ['7', '8', '9'],
+        [_, '0', _]
+    ]
     const keys = observed.split('').map(o => getSiblingKeys(o.toString(), pad))
     const results = cartesian(keys).map(arr => arr.join(''))
 
@@ -142,27 +195,16 @@ function getPINs(observed) {
     }
 
     function cartesian(arr) {
-        return arr.reduce((a, b) => (
-            a.map((x) => b.map((y) => x.concat(y))).reduce((a, b) => a.concat(b), [])
-        ), [[]])
+        arr.reduce((a, b) => {
+            let q = a.map((x) => {
+                b.map((y) => x.concat(y))
+            })
+            console.log('q', q)
+            q.reduce((a, b) => {
+                a.concat(b)
+            }, [])
+
+            return q
+        }, [[]])
     }
 }
-
-String.prototype.log = function () {
-    let x = ''
-    for (let e of this)
-        x += e
-    console.log(x)
-}
-
-let xxx = 0
-function x() {
-    console.log(++xxx)
-    if (xxx < 5) x()
-}
-
-x()
-
-// console.log([1, 2, 3].reduce((a, b) => (a + b)))
-// console.log([1, 2, 3].reduce((a, b) => (a + b), []))
-
