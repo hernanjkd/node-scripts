@@ -1,3 +1,7 @@
+function log(...str) {
+    console.log(...str)
+}
+
 const lock = [
     ['1', '2', '3'],
     ['4', '5', '6'],
@@ -44,11 +48,27 @@ let all = [who, what, when]
 let arr = []
 let mem = ''
 function loop(x) {
-    return x.reduce((a, b) => a.map(x => b.map(y => x.concat(y)).reduce((a, b) => a.concat(b), [])), [[]])
+    return x.reduce((a, b) => {
+        let r = a.map(x => {
+            let w = b.map(y => {
+                let q = x.concat(y)
+                log('b.map', q)
+                return q
+            })
+            log('a.map', w)
+            return w
+        })
+        log('bothmaps', r)
+        r.reduce((a, b) => {
+            let r = a.concat(b)
+            log('2reduce', r)
+            return r
+        })
+    })
 }
 
 
-// console.log(loop(all))
+log('result', loop(all))
 
 
 
@@ -129,14 +149,14 @@ function getPINs(observed) {
             }))
             console.log('map', q)
             q = q.reduce((a, b) => a.concat(b))
-            console.log('redue', q)
+            console.log('reduce', q)
             return q
         })
     }
 }
 
 
-console.log('total', getPINs(all))
+// console.log('total', getPINs(all))
 
 
 
