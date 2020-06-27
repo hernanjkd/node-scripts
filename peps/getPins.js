@@ -148,9 +148,21 @@ function getPINs(observed) {
     }
 }
 
-function x() {
-    return 3, []
+String.prototype.log = function () {
+    let x = ''
+    for (let e of this)
+        x += e
+    console.log(x)
 }
 
-console.log([1, 2, 3].reduce((a, b) => (a + b)))
-console.log([1, 2, 3].reduce((a, b) => (a + b), []))
+let xxx = 0
+function x() {
+    console.log(++xxx)
+    if (xxx < 5) x()
+}
+
+x()
+
+// console.log([1, 2, 3].reduce((a, b) => (a + b)))
+// console.log([1, 2, 3].reduce((a, b) => (a + b), []))
+
