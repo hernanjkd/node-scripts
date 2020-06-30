@@ -50,7 +50,13 @@ let arr = []
 let mem = ''
 
 /*
-The way this one works is: for every element in a [ 'John', 'Peps' ], concat 
+The way this one works is:
+
+When mapping a, we are saying for every element in a, map b, which is saying give
+me every element of b and concat it w a.. then for the sec element of a, give me all
+the elements of b, and concat it w a.
+
+For every element in a [ 'John', 'Peps' ], concat 
 every element of b [ ' jumps ', ' codes ' ].. then reduce it to leave only one 
 single arr with all the elements.
 [ 'John jumps ', 'John codes ', 'Peps jumps ', 'Peps codes ' ]
@@ -73,6 +79,10 @@ And w the reduce, it will all be put in a single array
   'Peps jumps at night.',
   'Peps codes in the afternoon.',
   'Peps codes at night.' ]
+
+In the third iteration, every element of a, which is now the single list seen right above, 
+will get concated w every element of the new b [ '1', '2' ], and reduce it to make it a 
+single arr.
 */
 function loop(x) {
     return x.reduce((a, b) => {
