@@ -65,7 +65,7 @@ function loop(x) {
         // log('bothmaps', r)
         let s = r.reduce((a, b) => {
             let e = a.concat(b)
-            // log('2reduce', e)
+            log('2reduce', e)
             return e
         })
         log('s', s)
