@@ -48,26 +48,56 @@ let all = [who, what, when, why]
 
 let arr = []
 let mem = ''
+
+/*
+The way this one works is: for every element in a [ 'John', 'Peps' ], concat 
+every element of b [ ' jumps ', ' codes ' ].. then reduce it to leave only one 
+single arr with all the elements.
+[ 'John jumps ', 'John codes ', 'Peps jumps ', 'Peps codes ' ]
+
+In the second round, a is what was left over from the first iteration, which is
+a single list with every element of a concated w every element of b, this arr is
+now going to get concated w every element of the new b [ 'in the afternoon.', 'at night.' ], 
+looking like this
+[ [ 'John jumps in the afternoon.', 'John jumps at night.' ],
+  [ 'John codes in the afternoon.', 'John codes at night.' ],
+  [ 'Peps jumps in the afternoon.', 'Peps jumps at night.' ],
+  [ 'Peps codes in the afternoon.', 'Peps codes at night.' ] ]
+
+And w the reduce, it will all be put in a single array
+[ 'John jumps in the afternoon.',
+  'John jumps at night.',
+  'John codes in the afternoon.',
+  'John codes at night.',
+  'Peps jumps in the afternoon.',
+  'Peps jumps at night.',
+  'Peps codes in the afternoon.',
+  'Peps codes at night.' ]
+*/
 function loop(x) {
     return x.reduce((a, b) => {
+
+        log('a', a)
+        log('b', b)
+
         let r = a.map(x => {
             let w = b.map(y => {
                 let q = x.concat(y)
-                // log('b.map', q)
                 return q
             })
-            // log('a.map', w)
             return w
         })
-        log('a', a)
-        log('b', b)
+
         log('r', r)
-        // log('bothmaps', r)
+
         let s = r.reduce((a, b) => {
             let e = a.concat(b)
+            log('2a', a)
+            log('2b', b)
             log('2reduce', e)
             return e
         })
+
         log('s', s)
         return s
     })
