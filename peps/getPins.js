@@ -42,8 +42,9 @@ const coords = {
 let who = ['John', 'Peps']
 let what = [' jumps ', ' codes ']
 let when = ['in the afternoon.', 'at night.']
+let why = ['1', '2']
 
-let all = [who, what, when]
+let all = [who, what, when, why]
 
 let arr = []
 let mem = ''
@@ -52,23 +53,28 @@ function loop(x) {
         let r = a.map(x => {
             let w = b.map(y => {
                 let q = x.concat(y)
-                log('b.map', q)
+                // log('b.map', q)
                 return q
             })
-            log('a.map', w)
+            // log('a.map', w)
             return w
         })
-        log('bothmaps', r)
-        r.reduce((a, b) => {
-            let r = a.concat(b)
-            log('2reduce', r)
-            return r
+        log('a', a)
+        log('b', b)
+        log('r', r)
+        // log('bothmaps', r)
+        let s = r.reduce((a, b) => {
+            let e = a.concat(b)
+            // log('2reduce', e)
+            return e
         })
+        log('s', s)
+        return s
     })
 }
 
 
-log('result', loop(all))
+loop(all)
 
 
 
