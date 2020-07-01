@@ -5,10 +5,14 @@ let why = ['1', '2']
 
 let all = [who, what, when, why]
 
+
+
 function recursion(arr) {
     let answer = []
+    loop(arr)
+    return answer
 
-    const loop = (arr, vars = '') => {
+    function loop(arr, vars = '') {
         if (arr.length === 0)
             answer.push(vars)
         else {
@@ -17,22 +21,17 @@ function recursion(arr) {
                 loop(a, vars + e)
         }
     }
-
-    loop(arr)
-    console.log('recursion', answer)
 }
 
-recursion(all)
+console.log('recursion', recursion(all))
 
 
 
 function noLoop(arr) {
-    console.log('noLoop',
-        arr.reduce((a, b) => (
-            a.map(x => b.map(y => x.concat(y)))
-                .reduce((a, b) => a.concat(b))
-        ))
-    )
+    return arr.reduce((a, b) => (
+        a.map(x => b.map(y => x.concat(y)))
+            .reduce((a, b) => a.concat(b))
+    ))
 }
 
-// noLoop(all)
+console.log('noLoop', noLoop(all))
