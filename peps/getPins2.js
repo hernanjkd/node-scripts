@@ -1,11 +1,11 @@
 let who = ['John', 'Peps']
 let what = [' jumps ', ' codes ']
 let when = ['in the afternoon.', 'at night.']
-
+let why = ['1', '2']
 
 let all = [who, what, when, why]
 
-function loop(arr, vars) {
+function loop(arr, vars = '') {
     if (arr.length === 0)
         console.log(vars)
     else {
@@ -14,3 +14,5 @@ function loop(arr, vars) {
             loop(a, vars + e)
     }
 }
+
+loop(all)
