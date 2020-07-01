@@ -23,7 +23,7 @@ function recursion(arr) {
     }
 }
 
-console.log('recursion', recursion(all))
+// console.log('recursion', recursion(all))
 
 
 
@@ -34,4 +34,4 @@ function noLoop(arr) {
     ))
 }
 
-console.log('noLoop', noLoop(all))
+// console.log('noLoop', noLoop(all))
