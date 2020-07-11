@@ -9,6 +9,14 @@ function josephus(items, k) {
     return removed
 }
 
+function josephus2(items, k) {
+    items = [...items]
+    let removed = []
+    for (let i=(k-1)%items.length; items.length; i=(i+k-1)%items.length)
+        removed = removed.concat( items.splice(i,1) )
+    return removed
+}
+
 function log(...args) {
     console.log(...args)
 }
@@ -37,11 +45,9 @@ function remove(arr, k) {
 let arr = [1,2,3,4,5,6,7,8,9,]
 
 
-log( [...[4], ...[5]] )
-// log( [...[4]] )
-// log( [...[...[4]]] )
-// log( [...[...[...[4]]]] )
 
 
 log( josephus(arr, 1) )
 log( josephus(arr, 2) )
+
+log( remove(arr,2) )
