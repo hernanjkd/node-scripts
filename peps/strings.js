@@ -11,5 +11,8 @@ for (let e of x) {
 
 let obj = { a: '123' }
 
-for (let e of x)
-    log(obj[e])
+// for (let e of x)
+//     log(obj[e])
+
+
+x = '3256453324'
